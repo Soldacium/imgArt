@@ -1,0 +1,25 @@
+// main used colors
+$black: rgb(14, 14, 14);
+$gray-dark: rgb(41, 41, 41);
+$white-dirty: rgb(230, 230, 230);
+$white: rgb(240, 240, 240);
+$red: rgb(255, 0, 98);
+$blue: rgb(0, 140, 255);
+
+$main-color: $gray-dark;
+$color-secondary: white;
+
+// button default
+$button-font: 'Roboto', sans-serif;
+$default-button-width: 6rem;
+$default-button-height: 2rem;
+$defualt-button-padding: 0.3rem 1.3rem;
+
+// general default
+$default-border-radius: 0.5rem;
+$default-text-size: 1rem;
+
+$transition-short: 0.2s ease;
+$transition-medium: 0.6s ease;
+$transition-long: 1s ease;
+

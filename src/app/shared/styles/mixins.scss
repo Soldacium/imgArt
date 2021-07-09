@@ -1,0 +1,65 @@
+@import 'variables';
+
+@mixin max-fill{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+@mixin flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button{
+    @include flex-center();
+    border-radius: $default-border-radius;
+    // width: $default-button-width;
+    // height: $default-button-height;
+    font-size: $default-text-size;
+    margin: 2px;
+    position: relative;
+    font-family: $button-font;
+    text-decoration: none;
+    padding: $defualt-button-padding;
+    text-align: center
+}
+
+@mixin button-flat{
+    @include button();
+    border: 2px solid transparent;
+
+}
+
+
+@mixin set-colors($background:null, $border:null, $text:null){
+    @if($background){
+        background-color: $background;
+    }
+
+    @if($border){
+        border-color: $border;
+    }
+
+    @if($text){
+        color: $text;
+    }
+}
+
+@mixin set-hover-colors($background:null, $border:null, $text:null){
+    transition: $transition-short;
+    &:hover{
+        @if($background){
+            background-color: $background;
+        }
+    
+        @if($border){
+            border-color: $border;
+        }
+    
+        @if($text){
+            color: $text;
+        }  
+        cursor: pointer;
+    }
+}

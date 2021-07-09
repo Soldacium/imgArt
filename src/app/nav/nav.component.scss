@@ -1,0 +1,7 @@
+@import 'app/shared/styles/variables.scss';
+@import 'app/shared/styles/mixins.scss';
+
+button{
+    @include button-flat();
+    background-color: $red;
+}

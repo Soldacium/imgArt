@@ -1,0 +1,12 @@
+@import 'app/shared/styles/variables.scss';
+@import 'app/shared/styles/mixins.scss';
+
+button{
+    @include button-flat();
+    @include set-colors(transparent,$white,$white);
+    @include set-hover-colors($red,$red,$white);
+}
+
+img{
+    height: 2rem;
+}

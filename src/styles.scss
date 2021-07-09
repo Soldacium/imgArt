@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import 'app/shared/styles/variables.scss';
+@import 'app/shared/styles/mixins.scss';
 
 body{
     width: 100vw;
@@ -8,8 +11,8 @@ body{
     padding: 0;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
-    background-color: var(--colorPrimary);
-    color: var(--colorText);
+    background-color: $main-color;
+    color: $white;
 
     &::-webkit-scrollbar {
         width: 10px;
@@ -89,3 +92,7 @@ a{
     box-sizing: border-box;
 }
 html{ height: 100%; }
+
+.flex-center{
+    @include flex-center();
+}
