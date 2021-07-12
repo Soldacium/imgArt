@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { ImageModificationComponent } from './image-modification/image-modification.component';
 import { ButtonModeComponent } from './shared/components/button-mode/button-mode.component';
+import { UploadPictureComponent } from './shared/components/upload-picture/upload-picture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     ImageModificationComponent,
-    ButtonModeComponent
+    ButtonModeComponent,
+    UploadPictureComponent
   ],
   imports: [
     BrowserModule,

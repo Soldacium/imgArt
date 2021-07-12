@@ -1,6 +1,7 @@
 @import 'app/shared/styles/variables.scss';
 @import 'app/shared/styles/mixins.scss';
 
+$shadow-disposition: 10px;
 main{
     @include max-fill;
     @include flex-center;
@@ -11,9 +12,10 @@ main{
     p{
         font-size: 11rem;
         margin: 20px 0;
-        text-shadow: 6px 6px 0px $red;
+        text-shadow: $shadow-disposition $shadow-disposition 0px $red;
+        //filter: drop-shadow(16px 16px 0px $red);
         
-        animation: text-animation 0.7s ease;
+        animation: text-animation 1.3s ease;
         font-family: 'Pacifico', cursive;
     }
 
@@ -29,7 +31,7 @@ main{
         text-shadow: 0px 0px 0px $red;
     }
     100%{
-        text-shadow: 6px 6px 0px $red;
+        text-shadow: $shadow-disposition $shadow-disposition 0px $red;
     }
 }
 
