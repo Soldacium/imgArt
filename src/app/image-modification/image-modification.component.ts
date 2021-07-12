@@ -12,4 +12,8 @@ export class ImageModificationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onDrop(fileList: File){
+    console.log(fileList);
+  }
+
 }

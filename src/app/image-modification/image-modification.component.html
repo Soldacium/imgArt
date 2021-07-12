@@ -4,6 +4,10 @@
         <app-button-mode>
             <img src="assets/upload.svg" alt="">
         </app-button-mode>
+        
+        <input #backgroundfile type="file" id="selectedBackgroundFile" 
+        accept='image/*' 
+        (change)="onDrop(backgroundfile.files[0])"/>
     </div>
     
 </main>
