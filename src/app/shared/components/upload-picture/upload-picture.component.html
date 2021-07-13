@@ -1,1 +1,25 @@
-<p>upload-picture works!</p>
+<main>
+    <!--
+          
+    -->
+    <div class="dropzone" 
+    (drop)="dropHandler($event)" 
+    (dragover)="dragOverHandler($event)" 
+    (dragleave)="dragLeaveHandler($event)"
+    (click)="pickFileHandler()"
+    [ngClass]="{'dragged': isDraggedOver === true}"
+    >
+        <input type="file" id="file-input" #fileInput
+        accept='image/*' (change)="pickImage(fileInput.files)" hidden/>
+        <div *ngIf="file">
+            {{file.name}}
+        </div>
+        <div class="placeholder" *ngIf="!file">
+            <p>Upload</p>
+            <img src="assets/upload.svg" alt="" class="placeholder">
+        </div>
+        
+
+    </div>
+</main>
+

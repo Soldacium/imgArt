@@ -14,7 +14,7 @@ main{
         margin: 20px 0;
         text-shadow: $shadow-disposition $shadow-disposition 0px $red;
         //filter: drop-shadow(16px 16px 0px $red);
-        
+        margin-bottom: 80px;
         animation: text-animation 1.3s ease;
         font-family: 'Pacifico', cursive;
     }

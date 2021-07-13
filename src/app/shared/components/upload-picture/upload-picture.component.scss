@@ -1,0 +1,35 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.dropzone{
+    @include flex-center();
+    @include set-colors($gray-dark, $red, $white);
+    // @include set-hover-colors($gray-dark,$red,$white);
+    width: 300px;
+    height: 75px;
+    border: 2px dashed $red;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &.dragged{
+        background-color: $black;
+    }
+
+    &.dropped{
+        background-color: $black;
+    }
+
+    .placeholder{
+        pointer-events: none;
+        @include flex-center();
+        img{
+            margin-left: 1rem;
+            height: 1.5rem;
+            filter: invert(100%);
+        }
+
+        p{
+            font-size: 1.5rem;
+        }
+    }
+}
