@@ -10,7 +10,7 @@
     [ngClass]="{'dragged': isDraggedOver === true}"
     >
         <input type="file" id="file-input" #fileInput
-        accept='image/*' (change)="pickImage(fileInput.files)" hidden/>
+        accept='image/*' (change)="pickFile(fileInput.files)" hidden/>
         <div *ngIf="file">
             {{file.name}}
         </div>

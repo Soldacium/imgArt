@@ -1,7 +1,16 @@
 <main>
-    <div class="intro flex-center">
-        <p>Drop & Enjoy</p>
-        <app-upload-picture></app-upload-picture>
+    <div class="modification" [ngClass]="file ? 'active' : 'inactive'">
+        <div>
+            <button>KEKW</button>
+            <button>KEKW</button>
+            <button>KEKW</button>
+        </div>
+        <canvas id="canvas"></canvas>
     </div>
     
+    <div class="intro flex-center" [ngClass]="file ? 'inactive' : 'active'">
+        <p>Drop & Enjoy</p>
+        <app-upload-picture (fileChange)="getFile($event)"></app-upload-picture>
+    </div>
+
 </main>

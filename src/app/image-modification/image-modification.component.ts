@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CanvasUtilsService } from './canvas-utils';
 
 @Component({
   selector: 'app-image-modification',
@@ -7,11 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageModificationComponent implements OnInit {
 
-  constructor() { }
+  file: File | undefined;
+  canvas!: HTMLCanvasElement;
+  constructor(private canvasUtils: CanvasUtilsService) { }
 
   ngOnInit(): void {
+    
   }
 
+  initBaseCanvas(){
+    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    console.log(this.canvas);
+    this.canvasUtils.init(this.canvas,800,600);
+  }
+
+  getFile(file: File){
+    console.log(file);
+    this.file = file;
+    this.initBaseCanvas();
+  }
 
 
 }

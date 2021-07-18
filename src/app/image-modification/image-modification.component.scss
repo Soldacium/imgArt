@@ -5,30 +5,52 @@ $shadow-disposition: 10px;
 main{
     @include max-fill;
     @include flex-center;
+    flex-direction: column;
+}
+
+.modification{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: $transition-medium;
+    &.active{
+        height: auto;
+        opacity: 1;
+
+    }
 }
 
 .intro{
     flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    >*{
+        position: relative;
+        transition: $transition-medium;
+        top: 0;
+    }
+
+    &.inactive{
+        p{
+            top: -20rem;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        app-upload-picture{
+            top: 20vh;
+        }
+    }
     p{
-        font-size: 11rem;
+        font-size: 10rem;
         margin: 20px 0;
         text-shadow: $shadow-disposition $shadow-disposition 0px $red;
         //filter: drop-shadow(16px 16px 0px $red);
         margin-bottom: 80px;
         animation: text-animation 1.3s ease;
         font-family: 'Pacifico', cursive;
-    }
-
-    img{
-        height: 2rem;
-        filter: invert(100%);
-        margin: 0.5rem;
-    }
-
-    .dropfile{
-        height: 100px;
-        width: 400px;
-        background-color: $blue;
     }
 }
 

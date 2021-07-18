@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-upload-picture',
@@ -12,6 +12,9 @@ export class UploadPictureComponent implements OnInit {
   filePath: any;
   fileUrl: string = '';
 
+  @Output()
+  fileChange = new EventEmitter<File>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,10 +22,7 @@ export class UploadPictureComponent implements OnInit {
 
   dropHandler(event: DragEvent): void{
     event.preventDefault();
-    if(event.dataTransfer !== null){
-      this.file = event.dataTransfer.files[0];
-      return;
-    }
+    this.pickFile(event.dataTransfer?.files as FileList)
   }
 
   dragOverHandler(event: Event) {
@@ -42,7 +42,7 @@ export class UploadPictureComponent implements OnInit {
     fileInputElement.click();
   }
 
-  pickImage(files: FileList | null) {
+  pickFile(files: FileList | null) {
 
     if (!files) { return; }
 
@@ -56,5 +56,7 @@ export class UploadPictureComponent implements OnInit {
     reader.onload = (_event) => {
       this.fileUrl = reader.result as string;
     };
+
+    this.fileChange.emit(this.file);
   }
 }
