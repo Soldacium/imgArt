@@ -7,6 +7,7 @@ import { NavComponent } from './nav/nav.component';
 import { ImageModificationComponent } from './image-modification/image-modification.component';
 import { ButtonModeComponent } from './shared/components/button-mode/button-mode.component';
 import { UploadPictureComponent } from './shared/components/upload-picture/upload-picture.component';
+import { ButtonFlatDirective } from '@shared/directives/button-flat.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { UploadPictureComponent } from './shared/components/upload-picture/uploa
     NavComponent,
     ImageModificationComponent,
     ButtonModeComponent,
-    UploadPictureComponent
+    UploadPictureComponent,
+    ButtonFlatDirective
   ],
   imports: [
     BrowserModule,

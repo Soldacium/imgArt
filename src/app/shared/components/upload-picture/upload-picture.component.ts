@@ -10,7 +10,7 @@ export class UploadPictureComponent implements OnInit {
   isDraggedOver = false;
   file!: File;
   filePath: any;
-  fileUrl: string = '';
+  fileUrl = '';
 
   @Output()
   fileChange = new EventEmitter<File>();
@@ -20,29 +20,29 @@ export class UploadPictureComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  dropHandler(event: DragEvent): void{
+  dropHandler(event: DragEvent): void {
     event.preventDefault();
-    this.pickFile(event.dataTransfer?.files as FileList)
+    this.pickFile(event.dataTransfer?.files as FileList);
   }
 
-  dragOverHandler(event: Event) {
+  dragOverHandler(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
-    this.isDraggedOver = true; 
+    this.isDraggedOver = true;
   }
 
-  dragLeaveHandler(event: Event){
+  dragLeaveHandler(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDraggedOver = false;
   }
 
-  pickFileHandler(){
-    const fileInputElement = document.getElementById("file-input") as HTMLInputElement;
+  pickFileHandler(): void {
+    const fileInputElement = document.getElementById('file-input') as HTMLInputElement;
     fileInputElement.click();
   }
 
-  pickFile(files: FileList | null) {
+  pickFile(files: FileList | null): void {
 
     if (!files) { return; }
 
@@ -53,7 +53,7 @@ export class UploadPictureComponent implements OnInit {
     this.file = files[0];
     this.filePath = files;
     reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
+    reader.onload = (event) => {
       this.fileUrl = reader.result as string;
     };
 

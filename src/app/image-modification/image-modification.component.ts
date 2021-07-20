@@ -13,19 +13,24 @@ export class ImageModificationComponent implements OnInit {
   constructor(private canvasUtils: CanvasUtilsService) { }
 
   ngOnInit(): void {
-    
+
   }
 
-  initBaseCanvas(){
+  initBaseCanvas(): void{
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
     console.log(this.canvas);
-    this.canvasUtils.init(this.canvas,800,600);
+    this.canvasUtils.init(this.canvas, 800, 600);
   }
 
-  getFile(file: File){
+  getFile(file: File): void{
     console.log(file);
     this.file = file;
     this.initBaseCanvas();
+    this.canvasUtils.loadImage(file);
+  }
+
+  makeDotsStyle(): void {
+    this.canvasUtils.getCanvasColorData();
   }
 
 
