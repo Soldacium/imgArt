@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CanvasDotsService } from './canvas-dots.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,16 @@ export class CanvasUtilsService {
   ctx!: CanvasRenderingContext2D;
   imageFile!: File;
   image!: HTMLImageElement;
+  imageColorArray!: Uint8ClampedArray;
   cWidth = 800;
   cHeight = 600;
 
 
   animationObjectsSize = 20;
 
-  constructor() { }
+  constructor(
+    private canvasDots: CanvasDotsService
+    ) {}
 
   init(canvas: HTMLCanvasElement, width: number, height: number): void{
     this.cWidth = canvas.width = width;
@@ -23,21 +27,31 @@ export class CanvasUtilsService {
     this.ctx.fillRect(0, 0, width, height);
   }
 
-  loadImage(image: File): HTMLImageElement {
+  loadImage(image: File): void {
     this.imageFile = image;
     this.image = new Image();
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onload = (e) => {
       this.image.src = reader.result as string;
-      this.ctx.drawImage(this.image, 0, 0, 800, 600);
+      this.image.onload = (ev) => {
+        this.ctx.drawImage(this.image, 0, 0, 800, 600);
+        this.imageColorArray = this.ctx.getImageData(0, 0, this.cWidth, this.cHeight).data;
+      };
     };
-    return this.image;
   }
 
   getCanvasColorData(): Uint8ClampedArray {
     console.log(this.ctx.getImageData(0, 0, this.cWidth, this.cHeight).data);
-    return this.ctx.getImageData(0, 0, this.cWidth, this.cHeight).data;
+    return this.imageColorArray;
+  }
+
+  drawDots(): void{
+    this.canvasDots.drawBlackDots(this.ctx);
+  }
+
+  drawAverageColorDots(): void {
+    this.canvasDots.drawAverageColorCircles(this.ctx, this.imageColorArray);
   }
 
   animate(): void {

@@ -33,6 +33,7 @@ main{
     }
 
     &.inactive{
+        pointer-events: none;
         p{
             top: -20rem;
             opacity: 0;

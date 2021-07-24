@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CanvasDotsService } from './canvas-dots.service';
 import { CanvasUtilsService } from './canvas-utils';
 
 @Component({
@@ -10,7 +11,10 @@ export class ImageModificationComponent implements OnInit {
 
   file: File | undefined;
   canvas!: HTMLCanvasElement;
-  constructor(private canvasUtils: CanvasUtilsService) { }
+  constructor(
+    private canvasUtils: CanvasUtilsService
+
+    ) { }
 
   ngOnInit(): void {
 
@@ -18,20 +22,24 @@ export class ImageModificationComponent implements OnInit {
 
   initBaseCanvas(): void{
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    console.log(this.canvas);
     this.canvasUtils.init(this.canvas, 800, 600);
   }
 
-  getFile(file: File): void{
-    console.log(file);
+  async getFile(file: File): Promise<void>{
     this.file = file;
     this.initBaseCanvas();
     this.canvasUtils.loadImage(file);
   }
 
   makeDotsStyle(): void {
-    this.canvasUtils.getCanvasColorData();
+    this.canvasUtils.drawDots();
   }
+
+  drawGrayscaleDots(): void{
+    this.canvasUtils.drawAverageColorDots();
+  }
+
+
 
 
 }
