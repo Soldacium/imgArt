@@ -12,6 +12,7 @@ main{
     height: 0;
     opacity: 0;
     transition: $transition-medium;
+    position: relative;
     &.active{
         height: auto;
         opacity: 1;
@@ -19,17 +20,35 @@ main{
 
     .buttons{
         button{
-            margin: 0.3rem;
+            margin: 0.5rem;
+            margin-left: 0;
+
+            &::first-letter{
+                text-transform: uppercase;
+                // color: var(--colorAccent1);
+            }
         }
     }
 
+
+
     .canvas-box{
         position: relative;
+
+        .options{
+            right: -22px;
+            top: -22px;
+            position: absolute;
+        }
+
         .draw{
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translate(-50%,-50%);
+            @include button-flat();
+            @include set-colors(var(--colorPrimary),transparent,white);
+            @include set-hover-colors(var(--colorAccent1));
         }
     }
 

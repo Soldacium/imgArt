@@ -7,15 +7,22 @@
             [active]="mode === buttonMode" 
             (click)="pickMode(buttonMode)" 
             [ngClass]="{'active': mode === buttonMode}"
-            >{{buttonMode.toUpperCase()}}</button>
+            >{{buttonMode}}</button>
+
         </div>
-        <div class="options">
-            <app-input-range [min]="1" [max]="20" [(inputModel)]="options.dotSize" (change)="changeOptions()">
-                Function slowdown
-            </app-input-range> 
-        </div>
+
         <div class="canvas-box">
             <canvas id="canvas"></canvas>
+            <div class="options">
+                <app-options>
+                    <app-input-range [min]="1" [max]="20" [(inputModel)]="options.size" (change)="changeOptions()">
+                        Size
+                    </app-input-range> 
+                    <app-input-range [min]="0" [max]="10" [(inputModel)]="options.spread" (change)="changeOptions()">
+                        Spread
+                    </app-input-range> 
+                </app-options>
+            </div>
             <button class="draw" (click)="draw()">Draw!</button>
         </div>
 

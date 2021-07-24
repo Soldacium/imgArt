@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import anime from 'animejs';
+import anime from 'animejs';
 
 @Component({
   selector: 'app-options',
@@ -10,22 +10,21 @@ export class OptionsComponent implements OnInit {
 
   optionsEl!: HTMLElement;
   optionsVisible = true;
-  
+
   constructor() { }
 
   ngOnInit(): void {
     this.optionsEl = document.getElementById('options-component') as HTMLElement;
-    // this.changeOptionsMode();
+    this.changeOptionsMode();
   }
 
   changeOptionsMode(): void{
-    // this.optionsVisible ? this.closeOptions() : this.openOptions();
+    this.optionsVisible ? this.closeOptions() : this.openOptions();
     this.optionsVisible = !this.optionsVisible;
   }
 
-  /*
   openOptions(): void{
-    var tl = anime.timeline({
+    let tl = anime.timeline({
       duration: 200,
       easing: 'linear'
     });
@@ -41,19 +40,17 @@ export class OptionsComponent implements OnInit {
   }
 
   closeOptions(): void{
-    var tl = anime.timeline({
+    let tl = anime.timeline({
       duration: 200,
       easing: 'linear'
     });
     tl.add({
       targets: this.optionsEl,
-      'max-height': '48px'
+      'max-height': '42px'
     })
     .add({
       targets: this.optionsEl,
-      'max-width': '48px'
-    })
+      'max-width': '42px'
+    });
   }
-  */
-
 }

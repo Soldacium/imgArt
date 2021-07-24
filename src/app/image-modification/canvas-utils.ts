@@ -9,13 +9,13 @@ export class CanvasUtilsService {
   ctx!: CanvasRenderingContext2D;
   imageFile!: File;
   image!: HTMLImageElement;
-  imageColorArray!: Uint8ClampedArray;
+  imageData!: ImageData;
   options: CanvasOptions = {
     width: 800,
     height: 600,
-    dotSize: 5,
-    dotSpread: 0
-  }
+    size: 5,
+    spread: 0
+  };
 
   animationObjectsSize = 20;
 
@@ -40,23 +40,26 @@ export class CanvasUtilsService {
       this.image.src = reader.result as string;
       this.image.onload = (ev) => {
         this.ctx.drawImage(this.image, 0, 0, 800, 600);
-        this.imageColorArray = this.ctx.getImageData(0, 0, this.options.width, this.options.height).data;
+        this.imageData = this.ctx.getImageData(0, 0, this.options.width, this.options.height);
       };
     };
   }
 
-  getCanvasColorData(): Uint8ClampedArray {
-    console.log(this.ctx.getImageData(0, 0, this.options.width, this.options.height).data);
-    return this.imageColorArray;
+  getCanvasColorData(): ImageData {
+    // console.log(this.ctx.getImageData(0, 0, this.options.width, this.options.height));
+    return this.imageData;
   }
 
-  changeOptions(options: CanvasOptions){
+  changeOptions(options: CanvasOptions): void{
     this.options = options;
     this.canvasDots.options = this.options;
   }
 
   drawAverageColorDots(): void {
-    this.canvasDots.drawAverageColorCircles(this.ctx, this.imageColorArray);
+    const imageCopy: ImageData = new ImageData(this.imageData.data.slice(0), this.options.width, this.options.height);
+    this.ctx.fillStyle = 'black';
+    this.ctx.fillRect(0, 0, 800, 600);
+    this.canvasDots.drawAverageColorCircles(this.ctx, imageCopy);
   }
 
   animate(): void {

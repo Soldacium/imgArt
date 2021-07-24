@@ -7,7 +7,7 @@ export class ButtonFlatDirective implements OnChanges {
 
   @Input() defaultColor = '#232323';
   @Input() hoverColor = '#333333';
-  @Input() activeColor = 'var(--colorAccent2)';
+  @Input() activeColor = 'var(--colorAccent1)';
   @Input() inactiveColor = '#232323';
   @Input() fontSize = '1rem';
   @Input() active = false;
@@ -25,7 +25,6 @@ export class ButtonFlatDirective implements OnChanges {
   }
 
   private changeDefaultColor(): void{
-    console.log(this.active,this.el.nativeElement);
     if (this.active){
       this.defaultColor = this.activeColor;
       this.el.nativeElement.style.backgroundColor = this.defaultColor;

@@ -7,7 +7,7 @@ main{
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: var(--colorPrimary);
-    border: 4px solid var(--colorSecondary);
+    // border: 2px solid var(--colorSecondary);
     z-index: 100;
     transition: 0.3s;
     overflow: hidden;
@@ -17,7 +17,7 @@ main{
         top: 1rem;
         left: 2.5rem;
         height: 2px;
-        border: 1px solid var(--colorAccent3);
+        border: 1px solid var(--colorAccent1);
         z-index: -1;
         margin: 0 1rem;
         position: absolute;

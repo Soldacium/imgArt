@@ -16,8 +16,8 @@ export class ImageModificationComponent implements OnInit {
   options: CanvasOptions = {
     width: 800,
     height: 600,
-    dotSize: 5,
-    dotSpread: 0
+    size: 5,
+    spread: 0
   };
 
   constructor(
