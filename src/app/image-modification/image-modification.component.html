@@ -1,15 +1,31 @@
 <main>
     <div class="modification" [ngClass]="file ? 'active' : 'inactive'">
-        <div>
-            <button appButtonFlat (click)="makeDotsStyle()">Dots</button>
-            <button appButtonFlat (click)="drawGrayscaleDots()">KEKW</button>
-            <button>KEKW</button>
+        <div class="buttons">
+            <button 
+            *ngFor="let buttonMode of buttons"
+            appButtonFlat
+            [active]="mode === buttonMode" 
+            (click)="pickMode(buttonMode)" 
+            [ngClass]="{'active': mode === buttonMode}"
+            >{{buttonMode.toUpperCase()}}</button>
         </div>
-        <canvas id="canvas"></canvas>
+        <div class="options">
+            <app-input-range [min]="1" [max]="20" [(inputModel)]="options.dotSize" (change)="changeOptions()">
+                Function slowdown
+            </app-input-range> 
+        </div>
+        <div class="canvas-box">
+            <canvas id="canvas"></canvas>
+            <button class="draw" (click)="draw()">Draw!</button>
+        </div>
+
+        
     </div>
     
-    <div class="intro flex-center" [ngClass]="file ? 'inactive' : 'active'">
+    <div class="intro-text flex-center" [ngClass]="file ? 'inactive' : 'active'">
         <p>Drop & Enjoy</p>
+    </div>
+    <div class="upload flex-center" [ngClass]="file ? 'inactive' : 'active'">
         <app-upload-picture (fileChange)="getFile($event)"></app-upload-picture>
     </div>
 

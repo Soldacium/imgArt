@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CanvasDotsService } from './canvas-dots.service';
+import { CanvasOptions } from '@shared/models/canvas-options.model';
 import { CanvasUtilsService } from './canvas-utils';
 
 @Component({
@@ -11,6 +11,15 @@ export class ImageModificationComponent implements OnInit {
 
   file: File | undefined;
   canvas!: HTMLCanvasElement;
+  buttons: Mode[] = ['dots', 'rhombs', 'normal'];
+  mode: Mode = 'dots';
+  options: CanvasOptions = {
+    width: 800,
+    height: 600,
+    dotSize: 5,
+    dotSpread: 0
+  };
+
   constructor(
     private canvasUtils: CanvasUtilsService
 
@@ -31,15 +40,23 @@ export class ImageModificationComponent implements OnInit {
     this.canvasUtils.loadImage(file);
   }
 
-  makeDotsStyle(): void {
-    this.canvasUtils.drawDots();
+  changeOptions(){
+    this.canvasUtils.changeOptions(this.options);
   }
 
-  drawGrayscaleDots(): void{
-    this.canvasUtils.drawAverageColorDots();
+  pickMode(mode: Mode): void{
+    this.mode = mode;
   }
 
-
-
-
+  draw(){
+    switch (this.mode) {
+      case 'dots':
+        this.canvasUtils.drawAverageColorDots();
+        break;
+      default:
+        break;
+    }
+  }
 }
+
+export type Mode = 'dots' | 'normal' | 'rhombs' ;

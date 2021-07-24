@@ -11,26 +11,38 @@ main{
 .modification{
     height: 0;
     opacity: 0;
-    overflow: hidden;
     transition: $transition-medium;
     &.active{
         height: auto;
         opacity: 1;
-
     }
+
+    .buttons{
+        button{
+            margin: 0.3rem;
+        }
+    }
+
+    .canvas-box{
+        position: relative;
+        .draw{
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+
+
 }
 
-.intro{
+.intro-text{
     flex-direction: column;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
-    >*{
-        position: relative;
-        transition: $transition-medium;
-        top: 0;
-    }
+    transition: $transition-medium;
 
     &.inactive{
         pointer-events: none;
@@ -38,10 +50,6 @@ main{
             top: -20rem;
             opacity: 0;
             pointer-events: none;
-        }
-
-        app-upload-picture{
-            top: 20vh;
         }
     }
     p{
@@ -52,6 +60,19 @@ main{
         margin-bottom: 80px;
         animation: text-animation 1.3s ease;
         font-family: 'Pacifico', cursive;
+    }
+}
+
+.upload{
+    flex-direction: column;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: $transition-medium;
+
+    &.inactive{
+        top: 90%;
     }
 }
 

@@ -8,6 +8,9 @@ import { ImageModificationComponent } from './image-modification/image-modificat
 import { ButtonModeComponent } from './shared/components/button-mode/button-mode.component';
 import { UploadPictureComponent } from './shared/components/upload-picture/upload-picture.component';
 import { ButtonFlatDirective } from '@shared/directives/button-flat.directive';
+import { InputRangeComponent } from '@components/input-range/input-range.component';
+import { OptionsComponent } from '@components/options/options.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { ButtonFlatDirective } from '@shared/directives/button-flat.directive';
     ImageModificationComponent,
     ButtonModeComponent,
     UploadPictureComponent,
-    ButtonFlatDirective
+    ButtonFlatDirective,
+    InputRangeComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

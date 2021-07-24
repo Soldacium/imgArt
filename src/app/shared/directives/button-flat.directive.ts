@@ -1,18 +1,19 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[appButtonFlat]'
 })
-export class ButtonFlatDirective {
+export class ButtonFlatDirective implements OnChanges {
 
-  @Input() defaultColor = 'var(--colorAccent3)';
-  @Input() hoverColor = '#20ff44';
-  @Input() fontSize = '2rem';
+  @Input() defaultColor = '#232323';
+  @Input() hoverColor = '#333333';
+  @Input() activeColor = 'var(--colorAccent2)';
+  @Input() inactiveColor = '#232323';
+  @Input() fontSize = '1rem';
   @Input() active = false;
 
   @HostListener('mouseenter') onMouseEnter(): void {
-    this.el.nativeElement.style.cursor = 'pointer';
-    this.highlight(this.hoverColor);
+    this.highlight('#ffffff32');
   }
 
   @HostListener('mouseleave') onMouseLeave(): void {
@@ -22,6 +23,18 @@ export class ButtonFlatDirective {
   private highlight(color: string): void {
     this.el.nativeElement.style.backgroundColor = color;
   }
+
+  private changeDefaultColor(): void{
+    console.log(this.active,this.el.nativeElement);
+    if (this.active){
+      this.defaultColor = this.activeColor;
+      this.el.nativeElement.style.backgroundColor = this.defaultColor;
+    }else{
+      this.defaultColor = this.inactiveColor;
+      this.el.nativeElement.style.backgroundColor = this.defaultColor;
+    }
+  }
+
   constructor(private el: ElementRef) {
     const buttonStyle = el.nativeElement.style;
     buttonStyle.backgroundColor = this.defaultColor;
@@ -30,9 +43,15 @@ export class ButtonFlatDirective {
     buttonStyle.padding = '0.5rem 1rem';
     buttonStyle.transition = '0.2s ease background-color';
     buttonStyle.cursor = 'pointer';
+    buttonStyle['border-radius'] = '0.5rem';
+    // buttonStyle.border = '2px dashed var(--colorAccent3)';
     buttonStyle.color = 'white';
-    if (this.active){
-      buttonStyle.backgroundColor = '#232323';
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void{
+    if(changes.active){
+      this.changeDefaultColor();
     }
   }
 }

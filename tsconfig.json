@@ -24,6 +24,7 @@
       "@components/*": ["app/shared/components/*"],
       "@services/*": ["app/shared/services/*"],
       "@shared/*": ["app/shared/*"],
+      "@models/*": ["app/shared/models/*"],
       "@appRoot/*": ["app/*"],
     },
     "allowSyntheticDefaultImports": true

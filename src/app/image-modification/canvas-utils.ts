@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CanvasOptions } from '@shared/models/canvas-options.model';
 import { CanvasDotsService } from './canvas-dots.service';
 
 @Injectable({
@@ -9,9 +10,12 @@ export class CanvasUtilsService {
   imageFile!: File;
   image!: HTMLImageElement;
   imageColorArray!: Uint8ClampedArray;
-  cWidth = 800;
-  cHeight = 600;
-
+  options: CanvasOptions = {
+    width: 800,
+    height: 600,
+    dotSize: 5,
+    dotSpread: 0
+  }
 
   animationObjectsSize = 20;
 
@@ -20,8 +24,8 @@ export class CanvasUtilsService {
     ) {}
 
   init(canvas: HTMLCanvasElement, width: number, height: number): void{
-    this.cWidth = canvas.width = width;
-    this.cHeight = canvas.height = height;
+    this.options.width = canvas.width = width;
+    this.options.height = canvas.height = height;
     this.ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     this.ctx.fillStyle = '#111111';
     this.ctx.fillRect(0, 0, width, height);
@@ -36,18 +40,19 @@ export class CanvasUtilsService {
       this.image.src = reader.result as string;
       this.image.onload = (ev) => {
         this.ctx.drawImage(this.image, 0, 0, 800, 600);
-        this.imageColorArray = this.ctx.getImageData(0, 0, this.cWidth, this.cHeight).data;
+        this.imageColorArray = this.ctx.getImageData(0, 0, this.options.width, this.options.height).data;
       };
     };
   }
 
   getCanvasColorData(): Uint8ClampedArray {
-    console.log(this.ctx.getImageData(0, 0, this.cWidth, this.cHeight).data);
+    console.log(this.ctx.getImageData(0, 0, this.options.width, this.options.height).data);
     return this.imageColorArray;
   }
 
-  drawDots(): void{
-    this.canvasDots.drawBlackDots(this.ctx);
+  changeOptions(options: CanvasOptions){
+    this.options = options;
+    this.canvasDots.options = this.options;
   }
 
   drawAverageColorDots(): void {
