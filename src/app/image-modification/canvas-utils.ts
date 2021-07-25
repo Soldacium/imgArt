@@ -62,6 +62,13 @@ export class CanvasUtilsService {
     this.canvasDots.drawAverageColorCircles(this.ctx, imageCopy);
   }
 
+  drawAverageColorRhombuses(): void {
+    const imageCopy: ImageData = new ImageData(this.imageData.data.slice(0), this.options.width, this.options.height);
+    this.ctx.fillStyle = 'black';
+    this.ctx.fillRect(0, 0, 800, 600);
+    this.canvasDots.drawAverageColorRhombuses(this.ctx, imageCopy);
+  }
+
   animate(): void {
 
   }

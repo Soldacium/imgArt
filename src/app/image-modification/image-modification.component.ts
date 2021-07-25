@@ -12,7 +12,7 @@ export class ImageModificationComponent implements OnInit {
   file: File | undefined;
   canvas!: HTMLCanvasElement;
   buttons: Mode[] = ['dots', 'rhombs', 'normal'];
-  mode: Mode = 'dots';
+  mode: Mode = 'rhombs';
   options: CanvasOptions = {
     width: 800,
     height: 600,
@@ -52,6 +52,9 @@ export class ImageModificationComponent implements OnInit {
     switch (this.mode) {
       case 'dots':
         this.canvasUtils.drawAverageColorDots();
+        break;
+      case 'rhombs':
+        this.canvasUtils.drawAverageColorRhombuses();
         break;
       default:
         break;
