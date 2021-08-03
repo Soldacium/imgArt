@@ -6,8 +6,12 @@
             appButtonFlat
             [active]="mode === buttonMode" 
             (click)="pickMode(buttonMode)" 
-            [ngClass]="{'active': mode === buttonMode}"
             >{{buttonMode}}</button>
+            <button             
+            appButtonFlat
+            [active]="mode === 'custom'" 
+            (click)="pickMode('custom')" 
+            >Custom</button>
 
         </div>
 

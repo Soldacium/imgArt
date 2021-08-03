@@ -62,4 +62,4 @@ export class ImageModificationComponent implements OnInit {
   }
 }
 
-export type Mode = 'dots' | 'normal' | 'rhombs' ;
+export type Mode = 'dots' | 'normal' | 'rhombs' | 'custom' ;

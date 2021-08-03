@@ -11,6 +11,7 @@ import { ButtonFlatDirective } from '@shared/directives/button-flat.directive';
 import { InputRangeComponent } from '@components/input-range/input-range.component';
 import { OptionsComponent } from '@components/options/options.component';
 import { FormsModule } from '@angular/forms';
+import { ChooseShapeComponent } from './shared/components/choose-shape/choose-shape.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     UploadPictureComponent,
     ButtonFlatDirective,
     InputRangeComponent,
-    OptionsComponent
+    OptionsComponent,
+    ChooseShapeComponent
   ],
   imports: [
     BrowserModule,

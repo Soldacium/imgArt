@@ -43,6 +43,7 @@ export class ButtonFlatDirective implements OnChanges {
     buttonStyle.transition = '0.2s ease background-color';
     buttonStyle.cursor = 'pointer';
     buttonStyle['border-radius'] = '0.5rem';
+    
     // buttonStyle.border = '2px dashed var(--colorAccent3)';
     buttonStyle.color = 'white';
 
